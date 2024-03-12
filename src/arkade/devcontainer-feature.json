@@ -1,0 +1,32 @@
+{
+    "id": "arkade",
+    "version": "1.0.0",
+    "name": "Arkade",
+    "documentationURL": "https://github.com/alexellis/arkade",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest"
+            ],
+            "default": "latest",
+            "description": "Select or enter an arkade version."
+        },
+        "kubectl" : {
+            "type": "string",
+            "proposals": [
+                "true",
+                "false",
+                "latest"
+            ],
+            "default": "false",
+            "description": "Select or enter a kubectl version."
+        }
+    },
+    "containerEnv": {
+        "PATH": "~/.arkade/bin:${PATH}"
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

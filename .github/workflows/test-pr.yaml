@@ -12,33 +12,7 @@ jobs:
         id: filter
         with:
           filters: |
-            anaconda: ./**/anaconda/**
-            aws-cli: ./**/aws-cli/**
-            azure-cli: ./**/azure-cli/**
-            common-utils: ./**/common-utils/**
-            conda: ./**/conda/**
-            desktop-lite: ./**/desktop-lite/** 
-            docker-outside-of-docker: ./**/docker-outside-of-docker/**
-            docker-in-docker: ./**/docker-in-docker/**
-            dotnet: ./**/dotnet/**
-            git: ./**/git/**
-            git-lfs: ./**/git-lfs/**
-            github-cli: ./**/github-cli/**
-            go: ./**/go/**
-            hugo: ./**/hugo/**
-            java: ./**/java/**
-            kubectl-helm-minikube: ./**/kubectl-helm-minikube/**
-            node: ./**/node/**
-            nvidia-cuda: ./**/nvidia-cuda/**
-            oryx: ./**/oryx/**
-            php: ./**/php/**
-            powershell: ./**/powershell/**
-            python: ./**/python/**
-            ruby: ./**/ruby/**
-            rust: ./**/rust/**
-            sshd: ./**/sshd/**
-            terraform: ./**/terraform/**
-            nix: ./**/nix/**
+            arkade: ./**/arkade/**
 
   test:
     needs: [detect-changes]
@@ -49,12 +23,7 @@ jobs:
         features: ${{ fromJSON(needs.detect-changes.outputs.features) }}
         baseImage:
           [
-            "ubuntu:focal",
-            "ubuntu:jammy",
-            "debian:11",
-            "debian:12",
-            "mcr.microsoft.com/devcontainers/base:ubuntu",
-            "mcr.microsoft.com/devcontainers/base:debian",
+            "ghcr.io/bobrossthepainter/container-images/workbench-ubuntu:latest",
           ]
     steps:
       - uses: actions/checkout@v3

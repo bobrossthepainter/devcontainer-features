@@ -5,11 +5,11 @@ on:
       features:
         description: "List of features to execute tests against"
         required: true
-        default: "go dotnet"
+        default: "arkade"
       baseImage:
         description: "Base image"
         required: true
-        default: "ubuntu:focal"
+        default: "ghcr.io/bobrossthepainter/container-images/workbench-ubuntu:latest"
       logLevel:
         description: "Log Level (info/debug/trace)"
         required: true

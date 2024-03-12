@@ -47,7 +47,7 @@
             "id": "selectedBaseImage",
             "type": "promptString",
             "description": "Base Image",
-            "default": "mcr.microsoft.com/vscode/devcontainers/base:focal"
+            "default": "ghcr.io/bobrossthepainter/container-images/workbench-ubuntu:latest"
         }
     ]
 }
