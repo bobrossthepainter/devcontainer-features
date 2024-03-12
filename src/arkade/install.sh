@@ -2,9 +2,9 @@
 
 USERNAME="${USERNAME:-"${_REMOTE_USER:-"automatic"}"}"
 UPDATE_RC="${UPDATE_RC:-"true"}"
-KUBECTL_VERSION="${KUBECTL_VERSION:-"none"}"
+KUBECTL_VERSION="${KUBECTL:-"none"}"
 
-set -eux
+set -e
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -44,31 +44,24 @@ mkdir -p /usr/local/etc/dev-containers
 
 install_arkade_tool() {
     TOOL=$1
-    VERSION=$1  
-    if [ "${VERSION}" != "none" && "${VERSION}" != "false" ]; then
-        if [ "${VERSION}" = "latest" || "${VERSION}" = "true" ]; then
+    VERSION=$2
+        echo "Installing ${TOOL} with ${VERSION}"
+    if [ "${VERSION}" != "none" ] && [ "${VERSION}" != "false" ]; then
+        if [ "${VERSION}" = "latest" ] || [ "${VERSION}" = "true" ]; then
+            echo "Installing ${TOOL} version: ${VERSION}"
             arkade get $TOOL
-            VERSION=latest
         else
-            arkade get $TOOL --version "${KUBECTL_VERSION}"
+            echo "Installing ${TOOL} version: ${VERSION}"
+            arkade get $TOOL --version "${VERSION}"
         fi
         return 0
     fi
     return 1
 }
 
-add_to_rc () {
-    if [ -f "/etc/zsh/zshrc" ]; then
-        echo "${notice_script}" | tee -a /etc/zsh/zshrc
-    fi
-
-    if [ -f "/etc/bash.bashrc" ]; then
-        echo "${notice_script}" | tee -a /etc/bash.bashrc
-    fi
-}
-
 # Install Arkade if it's missing
-if ! arkade version &> /dev/null ; then
+# if ! arkade version &> /dev/null ; then
+if true ; then
 
     curl -sLS https://get.arkade.dev | sh
 
@@ -76,7 +69,11 @@ if ! arkade version &> /dev/null ; then
 
     updaterc "export PATH=$PATH:/root/.arkade/bin"
 
-    echo "arkade version: $(arkade version)" >> /usr/local/etc/dev-containers/arkade.txt
+    if [ -f "/etc/bash.bashrc" ]; then
+        echo 'source /etc/bash_completion' >> /etc/bash.bashrc
+    fi
+
+    echo "arkade version: $(arkade version | grep "Version:" | cut -d ' ' -f 2)" >> /usr/local/etc/dev-containers/apps.txt
 
     if install_arkade_tool kubectl "${KUBECTL_VERSION}"; then
         if [ -f "/etc/zsh/zshrc" ]; then
@@ -86,17 +83,9 @@ if ! arkade version &> /dev/null ; then
             echo 'source <(kubectl completion bash)' >> /etc/bash.bashrc
             updaterc "alias k=kubectl\ncomplete -F __start_kubectl k"
         fi
-        echo "kubectl version: $(kubectl version --client=true)" >> /usr/local/etc/dev-containers/arkade.txt
+        echo "kubectl version: $(kubectl version --client=true --output=json | jq '.clientVersion.gitVersion')" >> /usr/local/etc/dev-containers/apps.txt
     fi
 fi
-
-# Display a notice on conda when not running in GitHub Codespaces
-notice_script="$(cat << 'EOF'
-    cat "/usr/local/etc/dev-containers/arkade.txt"
-EOF
-)"
-
-updaterc "${notice_script}"
 
 
 echo "Done!"

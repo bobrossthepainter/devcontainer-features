@@ -1,5 +1,11 @@
 {
     "image": "mcr.microsoft.com/devcontainers/javascript-node:1-18",
+    "mounts": [
+      "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/root/.gitconfig,type=bind",
+      "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
+    "workspaceFolder": "${localWorkspaceFolder}",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
@@ -13,5 +19,7 @@
                 "mads-hartmann.bash-ide-vscode"
             ]
         }
-    }
+    },
+    "remoteUser": "root",
+    "updateRemoteUserUID": false
 }

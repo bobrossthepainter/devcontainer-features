@@ -1,6 +1,6 @@
 {
-  "install_extensions": {
-    "image": "ghcr.io/bobrossthepainter/container-images/workbench-ubuntu:vjammy-20230126",
+  "install_with_kubectl": {
+    "image": "ghcr.io/bobrossthepainter/container-images/workbench-ubuntu:latest",
     "user": "alibeardaba",
     "features": {
       "arkade": {
