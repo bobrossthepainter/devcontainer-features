@@ -9,4 +9,4 @@ source dev-container-features-test-lib
 check "kubectl version" kubectl version --client=true
 
 # Report result
-reportResults^
+reportResults
