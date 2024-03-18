@@ -1,6 +1,6 @@
 {
     "id": "arkade",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Arkade",
     "documentationURL": "https://github.com/alexellis/arkade",
     "options": {
@@ -21,6 +21,16 @@
             ],
             "default": "false",
             "description": "Select or enter a kubectl version."
+        },
+        "helm" : {
+            "type": "string",
+            "proposals": [
+                "true",
+                "false",
+                "latest"
+            ],
+            "default": "false",
+            "description": "Select or enter a helm version."
         }
     },
     "containerEnv": {

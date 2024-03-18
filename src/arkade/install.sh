@@ -3,6 +3,7 @@
 USERNAME="${USERNAME:-"${_REMOTE_USER:-"automatic"}"}"
 UPDATE_RC="${UPDATE_RC:-"true"}"
 KUBECTL_VERSION="${KUBECTL:-"none"}"
+HELM_VERSION="${HELM:-"none"}"
 
 set -e
 
@@ -85,7 +86,15 @@ if true ; then
         fi
         echo "kubectl version: $(kubectl version --client=true --output=json | jq '.clientVersion.gitVersion')" >> /usr/local/etc/dev-containers/apps.txt
     fi
-fi
 
+    if install_arkade_tool helm "${HELM_VERSION}"; then
+        if [ -f "/etc/zsh/zshrc" ]; then
+            echo '[[ $commands[helm] ]] && source <(helm completion zsh)' >> /etc/zsh/zshrc
+        fi
+        if [ -f "/etc/bash.bashrc" ]; then
+            echo 'source <(helm completion bash)' >> /etc/bash.bashrc
+        fi
+    fi
+fi
 
 echo "Done!"

@@ -46,9 +46,11 @@ install_debian_packages() {
         wget \
         rsync \
         ca-certificates \
+        bash-completion \
         unzip \
         bzip2 \
         xz-utils \
+        dnsutils \
         zip \
         nano \
         vim-tiny \
