@@ -17,6 +17,7 @@
 |-----|-----|-----|-----|
 | version | Select or enter an arkade version. | string | latest |
 | kubectl | Select or enter a kubectl version. | string | false |
+| helm | Select or enter a helm version. | string | false |
 
 ## Using Arkade
 
