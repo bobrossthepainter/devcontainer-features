@@ -4,6 +4,8 @@ USERNAME="${USERNAME:-"${_REMOTE_USER:-"automatic"}"}"
 UPDATE_RC="${UPDATE_RC:-"true"}"
 KUBECTL_VERSION="${KUBECTL:-"none"}"
 HELM_VERSION="${HELM:-"none"}"
+K9S_VERSION="${HELM:-"none"}"
+CUSTOM_TOOLS="${CUSTOM_TOOLS:-""}"
 
 set -e
 
@@ -95,6 +97,14 @@ if true ; then
             echo 'source <(helm completion bash)' >> /etc/bash.bashrc
         fi
     fi
+
+    install_arkade_tool k9s "${K9S_VERSION}"
+
+    if [ "${CUSTOM_TOOLS}" != "" ]; then
+        echo "Installing custom tools: ${CUSTOM_TOOLS}"
+        arkade get ${CUSTOM_TOOLS}
+    fi
+
 fi
 
 echo "Done!"
