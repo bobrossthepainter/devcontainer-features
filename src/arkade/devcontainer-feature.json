@@ -31,6 +31,24 @@
             ],
             "default": "false",
             "description": "Select or enter a helm version."
+        },
+        "k9s" : {
+            "type": "string",
+            "proposals": [
+                "true",
+                "false",
+                "latest"
+            ],
+            "default": "false",
+            "description": "Select or enter a k9s version."
+        },
+        "custom" : {
+            "type": "string",
+            "proposals": [
+                "kind@latest sops@v3.9.3"
+            ],
+            "default": "",
+            "description": "Install custom arkade packages."
         }
     },
     "containerEnv": {

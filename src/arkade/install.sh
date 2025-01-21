@@ -4,8 +4,8 @@ USERNAME="${USERNAME:-"${_REMOTE_USER:-"automatic"}"}"
 UPDATE_RC="${UPDATE_RC:-"true"}"
 KUBECTL_VERSION="${KUBECTL:-"none"}"
 HELM_VERSION="${HELM:-"none"}"
-K9S_VERSION="${HELM:-"none"}"
-CUSTOM_TOOLS="${CUSTOM_TOOLS:-""}"
+K9S_VERSION="${K9S:-"none"}"
+CUSTOM="${CUSTOM:-""}"
 
 set -e
 
@@ -100,9 +100,9 @@ if true ; then
 
     install_arkade_tool k9s "${K9S_VERSION}"
 
-    if [ "${CUSTOM_TOOLS}" != "" ]; then
-        echo "Installing custom tools: ${CUSTOM_TOOLS}"
-        arkade get ${CUSTOM_TOOLS}
+    if [ "${CUSTOM}" != "" ]; then
+        echo "Installing custom tools: ${CUSTOM}"
+        arkade get ${CUSTOM}
     fi
 
 fi
