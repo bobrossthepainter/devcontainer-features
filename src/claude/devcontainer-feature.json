@@ -1,0 +1,15 @@
+{
+    "id": "claude",
+    "version": "1.0.1",
+    "name": "Claude",
+    "documentationURL": "https://claude.ai",
+    "options": {
+
+    },
+    "containerEnv": {
+        "PATH": "~/.local/bin:${PATH}"
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

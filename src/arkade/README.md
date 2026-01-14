@@ -18,6 +18,8 @@
 | version | Select or enter an arkade version. | string | latest |
 | kubectl | Select or enter a kubectl version. | string | false |
 | helm | Select or enter a helm version. | string | false |
+| k9s | Select or enter a k9s version. | string | false |
+| custom | Install custom arkade packages. | string | - |
 
 ## Using Arkade
 
