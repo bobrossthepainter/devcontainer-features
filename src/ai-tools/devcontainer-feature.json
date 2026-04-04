@@ -1,6 +1,6 @@
 {
     "id": "ai-tools",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "name": "Ai-Tools",
     "documentationURL": "https://github.com/bobrossthepainter/devcontainer-features",
     "options": {
@@ -19,6 +19,7 @@
         "PATH": "~/.claude/local/bin:~/.local/bin:${PATH}"
     },
     "installsAfter": [
-        "ghcr.io/devcontainers/features/common-utils"
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/node"
     ]
 }
