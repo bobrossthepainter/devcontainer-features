@@ -10,7 +10,7 @@
 set -e
 
 INSTALL_ZSH="${INSTALLZSH:-"true"}"
-CONFIGURE_ZSH_AS_DEFAULT_SHELL="${CONFIGUREZSHASDEFAULTSHELL:-"false"}"
+CONFIGURE_ZSH_AS_DEFAULT_SHELL="${CONFIGUREZSHASDEFAULTSHELL:-"true"}"
 INSTALL_OH_MY_ZSH="${INSTALLOHMYZSH:-"true"}"
 INSTALL_OH_MY_ZSH_CONFIG="${INSTALLOHMYZSHCONFIG:-"true"}"
 UPGRADE_PACKAGES="${UPGRADEPACKAGES:-"true"}"
@@ -52,6 +52,7 @@ install_debian_packages() {
         xz-utils \
         dnsutils \
         zip \
+        bubblewrap \
         nano \
         vim-tiny \
         less \

@@ -1,0 +1,24 @@
+{
+    "id": "ai-tools",
+    "version": "1.0.1",
+    "name": "Ai-Tools",
+    "documentationURL": "https://github.com/bobrossthepainter/devcontainer-features",
+    "options": {
+        "claude": {
+            "type": "boolean",
+            "default": false,
+            "description": "Install Claude Code CLI?"
+        },
+        "codex": {
+            "type": "boolean",
+            "default": false,
+            "description": "Install OpenAI Codex CLI?"
+        }
+    },
+    "containerEnv": {
+        "PATH": "~/.claude/local/bin:~/.local/bin:${PATH}"
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
