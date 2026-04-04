@@ -1,6 +1,6 @@
 {
     "id": "ai-tools",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "name": "Ai-Tools",
     "documentationURL": "https://github.com/bobrossthepainter/devcontainer-features",
     "options": {

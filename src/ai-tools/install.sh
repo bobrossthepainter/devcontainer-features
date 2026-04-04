@@ -13,6 +13,10 @@ if [ "$CLAUDE" = "true" ]; then
 fi
 
 if [ "$CODEX" = "true" ]; then
+    echo "Installing bubblewrap sandbox..."
+    apt-get update -y
+    apt-get install -y bubblewrap
+    rm -rf /var/lib/apt/lists/*
     echo "Installing OpenAI Codex CLI..."
     npm install -g @openai/codex
 fi
