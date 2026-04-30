@@ -21,7 +21,6 @@ if [ "$CODEX" = "true" ]; then
     npm install -g @openai/codex
 fi
 
-// pi
 if [ "$PI" = "true" ]; then
     echo "Installing git-delta and glow for Pi..."
     apt-get update -y
