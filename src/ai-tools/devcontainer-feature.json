@@ -13,6 +13,11 @@
             "type": "boolean",
             "default": false,
             "description": "Install OpenAI Codex CLI?"
+        },
+        "pi": {
+            "type": "boolean",
+            "default": false,
+            "description": "Install Pi Coding Agent Harness?"
         }
     },
     "containerEnv": {
