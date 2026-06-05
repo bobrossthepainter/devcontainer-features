@@ -22,11 +22,20 @@ if [ "$CODEX" = "true" ]; then
 fi
 
 if [ "$PI" = "true" ]; then
+    DELTA_VERSION=0.19.2
+    GLOW_VERSION=2.1.2
     echo "Installing git-delta and glow for Pi..."
+    ARCH="$(dpkg --print-architecture)" && \
+    curl -fsSL "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_${ARCH}.deb" -o /tmp/git-delta.deb && \
+    curl -fsSL "https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_${GLOW_VERSION}_${ARCH}.deb" -o /tmp/glow.deb && \
+    dpkg -i /tmp/git-delta.deb /tmp/glow.deb && \
+    rm -f /tmp/git-delta.deb /tmp/glow.deb
+    echo "Installing bat for Pi..."
     apt-get update -y
-    apt-get install -y bat git-delta glow
+    apt-get install -y bat
     rm -rf /var/lib/apt/lists/*
-    curl -fsSL https://pi.dev/install.sh | bash
+    echo "Installing Pi..."
+    npm install -g @mariozechner/pi-coding-agent
 fi
 
 echo "Done!"
