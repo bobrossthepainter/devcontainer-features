@@ -1,5 +1,5 @@
 
-# Arkade (arkade)
+# Ai-Tools (ai-tools)
 
 
 
@@ -7,7 +7,7 @@
 
 ```json
 "features": {
-    "ghcr.io/bobrossthepainter/devcontainer-features/arkade:1": {}
+    "ghcr.io/bobrossthepainter/devcontainer-features/ai-tools:1": {}
 }
 ```
 
@@ -15,16 +15,15 @@
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| version | Select or enter an arkade version. | string | latest |
-| kubectl | Select or enter a kubectl version. | string | false |
-| helm | Select or enter a helm version. | string | false |
-| k9s | Select or enter a k9s version. | string | false |
-| custom | Install custom arkade packages. | string | - |
+| claude | Install Claude Code CLI? | boolean | false |
+| codex | Install OpenAI Codex CLI? | boolean | false |
 
-## Using Arkade
+## Supported Tools
 
-Go to [https://github.com/alexellis/arkade] for more information.
+- **Claude Code CLI** — Anthropic's CLI for Claude. See [claude.ai](https://claude.ai) for more information.
+- **OpenAI Codex CLI** — OpenAI's coding agent. Installed via npm (`@openai/codex`).
 
+Both tools default to not being installed. Enable the ones you need via the feature options.
 
 ## OS Support
 
@@ -33,4 +32,4 @@ Go to [https://github.com/alexellis/arkade] for more information.
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/bobrossthepainter/devcontainer-features/blob/main/src/arkade/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/bobrossthepainter/devcontainer-features/blob/main/src/ai-tools/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
