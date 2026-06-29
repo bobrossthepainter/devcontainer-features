@@ -40,7 +40,8 @@ if [ "$PI" = "true" ]; then
     # rm -rf /var/lib/apt/lists/*
 
     echo "Installing Pi..."
-    npm install -g @mariozechner/pi-coding-agent
+    npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+    pi install git:git@github.com:bobrossthepainter/pi-diff-view
 fi
 
 echo "Done!"
